@@ -12,11 +12,12 @@
         </div>
         <div class="col-sm-2">
           <button class="btn btn-success" v-on:click="addCounter">Add</button>
-          <button class="btn btn-danger" v-on:click="removeCounter">Delete</button>
+          <button class="btn btn-danger" v-on:click="remove">Delete</button>
         </div>
       </div>
     </div>
-   <counter v-for="counter in counters" :value="counter.value" :format="counter.format"></counter>
+   <counter v-for="counter in counters" :value="counter.value" :format="counter.format" v-on:remove="remove"
+      :key="counter.id"></counter>
  </div>
 </template>
 
@@ -56,7 +57,7 @@
        this.counters.push(Counter)
      },
 
-     removeCounter(id) {
+     remove(id) {
        this.counters.splice(id,1)
        this.$emit("remove", this.id)
      }

@@ -1,10 +1,7 @@
 <template>
   <div class="panel panel-default panelMargin">
        <h1>
-         Score:
-         <span class="counter">{{ displayedValue }}</span>
-         <button class="btn btn-danger pull-right">Delete</button>
-
+         Score: {{ displayedValue }}
        </h1>
        <div class="panel-body">
          <div class="col-sm-offset-1 col-sm-3">
@@ -39,42 +36,42 @@
 
    computed: {
      displayedValue() {
-       return new Array(this.currentFormat-(this.currentValue+"").length+1).join(0) + this.currentValue;
+       return new Array(this.currentFormat-(this.currentValue+"").length+1).join(0) + this.currentValue
      }
    },
 
    methods: {
      up(e) {
-       e.preventDefault();
+       e.preventDefault()
        if (this.currentValue < (Math.pow(10, this.currentFormat)-1)) {
-         this.currentValue++;
+         this.currentValue++
        }
      },
 
      down(e) {
-       e.preventDefault();
+       e.preventDefault()
        if (this.currentValue > 0) {
-         this.currentValue--;
+         this.currentValue--
        }
      },
 
      get(e) {
-       e.preventDefault();
-       alert(this.currentValue);
+       e.preventDefault()
+       alert(this.currentValue)
      },
 
      set(e) {
        e.preventDefault();
-       if(this.inputField > (Math.pow(10, this.currentFormat) -1)) {
+       if((this.inputField > (Math.pow(10, this.currentFormat) -1)) || (this.inputField === '')) {
          this.currentValue = this.currentValue;
        } else {
-         this.currentValue = Math.trunc(this.inputField);
+         this.currentValue = Math.trunc(this.inputField)
        }
      },
 
      reset(e) {
        e.preventDefault();
-       this.currentValue = 0;
+       this.currentValue = 0
      }
    }
  }
