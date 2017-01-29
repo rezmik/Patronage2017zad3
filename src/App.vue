@@ -12,11 +12,11 @@
         </div>
         <div class="col-sm-2">
           <button class="btn btn-success" v-on:click="addCounter">Add</button>
-          <button class="btn btn-danger" v-on:click="remove">Delete</button>
         </div>
       </div>
     </div>
-   <counter v-for="counter in counters" :value="counter.value" :format="counter.format" v-on:remove="remove"
+   <counter v-for="counter in counters" :value="counter.value" :format="counter.format"
+      v-on:remove="removeCounter(counter)"
       :key="counter.id"></counter>
  </div>
 </template>
@@ -33,11 +33,13 @@
        counters: [
          {
            value: 100,
-           format: 4
+           format: 4,
+           id: Math.random()
          },
          {
            value: 10,
-           format: 3
+           format: 3,
+           id: Math.random()
          }
        ]
      }
@@ -57,9 +59,8 @@
        this.counters.push(Counter)
      },
 
-     remove(id) {
+     removeCounter(counter, id) {
        this.counters.splice(id,1)
-       this.$emit("remove", this.id)
      }
    }
  }

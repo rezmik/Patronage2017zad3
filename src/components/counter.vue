@@ -2,6 +2,8 @@
   <div class="panel panel-default panelMargin">
        <h1>
          Score: {{ displayedValue }}
+
+         <button class="btn btn-danger pull-right" v-on:click="$emit('remove', this.id)">Delete</button>
        </h1>
        <div class="panel-body">
          <div class="col-sm-offset-1 col-sm-3">
