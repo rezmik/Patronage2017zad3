@@ -1,24 +1,31 @@
 <template>
-  <counter v-for="counter in counters" :value="counter.value" :format="counter.format"></counter>
+   <counter v-for="counter in counters" :value="counter.value" :format="counter.format"></counter>
 </template>
 
 <script>
-import Counter from './components/Counter.vue';
+ import Counter from './components/Counter.vue'
 
-export default {
-  name: 'app',
-  /*data () {
-    return {
+ export default {
+   name: 'app',
+   data () {
+     return {
+       counters: [
+         {
+           value: 100,
+           format: 4
+         },
+         {
+           value: 10,
+           format: 3
+         }
+       ]
+     }
+   },
 
-    }
-  },*/
-
-  props: ["value", "format"],
-
-  components: {
-    'counter': Counter
-  }
-}
+   components: {
+     'counter': Counter
+   }
+ }
 </script>
 
 <style>
