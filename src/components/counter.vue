@@ -1,13 +1,26 @@
 <template>
-   <div id="app">
-     <!--<h1> Value: {{ currentValue }}, Format: {{ currentFormat }}</h1>-->
-     <h1>Score 1: <span class="counter">{{ displayedValue }}</span></h1>
-     <button v-on:click="up">Up</button>
-     <button v-on:click="down">Down</button>
-     <button v-on:click="get">Get</button>
-     <input type="number" v-model="inputField">
-     <button v-on:click="set">Set</button>
-     <button v-on:click="reset">Reset</button>
+  <div class="panel panel-default panelMargin">
+       <h1>
+         Score:
+         <span class="counter">{{ displayedValue }}</span>
+         <button class="btn btn-danger pull-right">Delete</button>
+
+       </h1>
+       <div class="panel-body">
+         <div class="col-sm-offset-1 col-sm-3">
+           <button class="btn btn-primary" v-on:click="up">Up</button>
+           <button class="btn btn-primary"v-on:click="down">Down</button>
+           <button class="btn btn-primary"v-on:click="get">Get</button>
+         </div>
+         <div class="col-sm-4">
+           <input class="form-control" type="number" v-model="inputField">
+         </div>
+         <div class="col-sm-2">
+           <button class="btn btn-primary"v-on:click="set">Set</button>
+           <button class="btn btn-primary"v-on:click="reset">Reset</button>
+         </div>
+         <div class="col-sm-2"></div>
+       </div>
    </div>
 </template>
 
@@ -17,8 +30,8 @@
    data () {
      return {
        currentValue: this.value,
-       currentFormat: this.format
-        //inputField: ''
+       currentFormat: this.format,
+       inputField: ''
      }
    },
 
@@ -37,7 +50,7 @@
          this.currentValue++;
        }
      },
-     
+
      down(e) {
        e.preventDefault();
        if (this.currentValue > 0) {
@@ -66,3 +79,9 @@
    }
  }
  </script>
+
+ <style>
+   .panelMargin {
+     padding-right: 15px;
+   }
+ </style>

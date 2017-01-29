@@ -1,5 +1,23 @@
 <template>
+  <div class="container" id="app">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="col-sm-1">Value:</div>
+        <div class="col-sm-4">
+          <input class="form-control" type="number" v-model="value">
+        </div>
+        <div class="col-sm-1">Format:</div>
+        <div class="col-sm-4">
+          <input class="form-control" type="number" v-model="format">
+        </div>
+        <div class="col-sm-2">
+          <button class="btn btn-success" v-on:click="addCounter">Add</button>
+          <button class="btn btn-danger" v-on:click="removeCounter">Delete</button>
+        </div>
+      </div>
+    </div>
    <counter v-for="counter in counters" :value="counter.value" :format="counter.format"></counter>
+ </div>
 </template>
 
 <script>
@@ -9,6 +27,8 @@
    name: 'app',
    data () {
      return {
+       value: '',
+       format: '',
        counters: [
          {
            value: 100,
@@ -24,6 +44,22 @@
 
    components: {
      'counter': Counter
+   },
+
+   methods: {
+     addCounter(e) {
+       let Counter = {
+         value: this.value,
+         format: this.format,
+         id: Math.random()
+       }
+       this.counters.push(Counter)
+     },
+
+     removeCounter(id) {
+       this.counters.splice(id,1)
+       this.$emit("remove", this.id)
+     }
    }
  }
 </script>
